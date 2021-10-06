@@ -1,5 +1,6 @@
 <?php
 // falta los require_once
+require_once "./VeterinariaController/VeterinariaController.php";
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -14,14 +15,16 @@ if (!empty($_GET['action'])) {
 
 $params = explode('/', $action);
 
+$VeterinariaController = new VeterinariaController();
+
 // determina que camino seguir según la acción
-switch (){
+switch ($params[0]) {
     case 'home': 
-        showHome(); 
-        break;
+       $VeterinariaController->showHome();
+       break;
     default: 
-        echo('404 Page not found'); 
-        break;
+       echo('404 Page not found'); 
+       break;
 }
 
 
